@@ -1,0 +1,57 @@
+html, body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.20);
+  border: none;
+}
+
+.nav-logo {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-items > li {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-right: 50px;
+}
+
+.title {
+  font-size: 35px;
+}
+
+.reasons-list > li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  color: white;
+  font-size: 16px;
+}
