@@ -62,3 +62,9 @@ main {
   border: none;
   cursor: pointer;
 }
+
+.meme-image {
+  max-width: 450px;
+  position: relative;
+  margin-top: 50px;
+}
