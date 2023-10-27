@@ -1,11 +1,14 @@
 import React from "react"
 import Die from "./components/Die"
+import FirstPage from "./components/FirstPage"
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
 
 
 export default function App() {
 
+  const [showFirstPage, setShowFirstPage] = React.useState(true);
+  const [name, setName] = React.useState("")
   const [dice, setDice] = React.useState(() => allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
   const [nrOfRolls, setNrOfRolls] = React.useState(0)
@@ -14,7 +17,10 @@ export default function App() {
   const [bestTime, setBestTime] = React.useState(
     () => JSON.parse(localStorage.getItem("bestTime")) || 0
   )
-  
+
+  console.log(name);
+
+
   React.useEffect(() => {
     let allHeld = dice.every(die => die.isHeld)
     if (allHeld) {
@@ -29,7 +35,7 @@ export default function App() {
 
   React.useEffect(() => {
     let intervalID;
-    if (!tenzies && timerIsRunning) {
+    if (!tenzies && timerIsRunning && !showFirstPage) {
       intervalID = setInterval(()=>setTime((prevTime) => prevTime + 1), 100)
     } else if (tenzies) {
       clearInterval(intervalID)
@@ -40,6 +46,16 @@ export default function App() {
     } 
     return () => clearInterval(intervalID)
   },[tenzies, timerIsRunning])
+
+
+  function getName(event) {
+    setName(event.target.value)
+  }
+
+
+  function startGame() {
+    setShowFirstPage(false);
+  }
 
 
   function generateNewDie() {
@@ -101,21 +117,34 @@ export default function App() {
   
 
     return (
-      <main className="main">
-        {tenzies && <Confetti />}
-        <h1 className="main--title">Tenzies</h1>
-        <p className="main--instructions">Roll until all dice are the same. 
-        Click each die to freeze it at its current value between rolls.</p>
-        <div className="main--dice-container">
-          {diceElements}
-        </div>
-        <button onClick={rollDice} className="main--roll-button">{tenzies? "New Game" : "Roll"}</button>
-        <p className="main--number-of-rolls">Nr. of rolls: {nrOfRolls}</p>
-        <p className="main--time">
-          <span>Best time: {parseFloat(bestTime/10).toFixed(1)}</span>
-          <span>Time: {parseFloat(time/10).toFixed(1)}</span>
-        </p>
-      </main>
+      <>
+       {showFirstPage ? (
+              <FirstPage name={getName} start={startGame} />
+            ) : (
+              <main className="main">
+                {tenzies && <Confetti />}
+
+                <h1 className="main--title">Tenzies</h1>
+
+                <p className="main--instructions">Roll until all dice are the same. 
+                Click each die to freeze it at its current value between rolls.</p>
+
+                <div className="main--dice-container">
+                  {diceElements}
+                </div>
+
+                <button onClick={rollDice} className="main--roll-button">{tenzies? "New Game" : "Roll"}</button>
+
+                <p className="main--number-of-rolls">Nr. of rolls: {nrOfRolls}</p>
+                <p className="main--name-and-time">
+                  <span>Player: <b>{name}</b></span>
+                  <span>Best time: <b>{parseFloat(bestTime/10).toFixed(1)}</b></span>
+                  <span>Time: <b>{parseFloat(time/10).toFixed(1)}</b></span>
+                </p>
+              </main>
+            )
+        }
+      </>
     )
   }
 
