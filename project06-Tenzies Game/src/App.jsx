@@ -12,7 +12,7 @@ export default function App() {
   const [time, setTime] = React.useState(0)
   const [timerIsRunning, setTimerIsRunning] = React.useState(false)
   const [bestTime, setBestTime] = React.useState(
-    JSON.parse(localStorage.getItem("bestTime")) || 0
+    () => JSON.parse(localStorage.getItem("bestTime")) || 0
   )
   
   React.useEffect(() => {
