@@ -9,7 +9,7 @@ export default function App() {
 
   const [showFirstPage, setShowFirstPage] = React.useState(true);
   const [name, setName] = React.useState("")
-  const [dice, setDice] = React.useState(() => allNewDice())
+  const [dice, setDice] = React.useState(allNewDice)
   const [tenzies, setTenzies] = React.useState(false)
   const [nrOfRolls, setNrOfRolls] = React.useState(0)
   const [time, setTime] = React.useState(0)
@@ -17,8 +17,6 @@ export default function App() {
   const [bestTime, setBestTime] = React.useState(
     () => JSON.parse(localStorage.getItem("bestTime")) || 0
   )
-
-  console.log(name);
 
 
   React.useEffect(() => {
@@ -32,6 +30,7 @@ export default function App() {
       }
     }
   }, [dice])
+
 
   React.useEffect(() => {
     let intervalID;
@@ -99,6 +98,7 @@ export default function App() {
 
 
   function holdDice(id) {
+    console.log(id)
     const heldDice = dice.map((die) => 
       (die.id === id? {...die, isHeld: !die.isHeld} : die)
     )
