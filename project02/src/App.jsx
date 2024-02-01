@@ -19,7 +19,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <div className="cards-list">
-        {cards} 
+        { cards } 
       </div>
     </div>
   )
