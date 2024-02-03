@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #0B2434;
+    padding: 20px;
+    font-family: Karla, sans-serif;
+}
+
+.main ,.fp--container{
+    background-color: #F5F5F5;
+    height: 500px;
+    max-width: 800px;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.main--title {
+    font-size: 40px;
+    margin: 0;
+}
+
+.main--instructions {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-top: 0;
+    text-align: center;
+}
+
+.main--dice-container {
+    display: grid;
+    grid-template: auto auto / repeat(5, 1fr);
+    gap: 20px;
+}
+
+.die {
+    height: 50px;
+    width: 50px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    font-size: 2rem;
+}
+
+.die--dot {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.die--first-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.die--second-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+.die--second-face .die--dot:nth-of-type(2) {
+    align-self: flex-end;
+}
+
+
+.die--third-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+.die--third-face .die--dot:nth-of-type(2) {
+    align-self: center;
+}
+
+.die--third-face .die--dot:nth-of-type(3) {
+    align-self: end;
+}
+
+.die--fourth-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+.die--fourth-face .die--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.die--fifth-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+.die--fifth-face .die--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.die--fifth-face .die--column:nth-of-type(2) {
+   justify-content: center;
+}
+
+.die--sixth-face {
+    display: flex;
+    justify-content: space-between;
+}
+
+.die--sixth-face .die--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.die--isHeld {
+    background-color: #59E391;
+}
+
+.main--roll-button, .fp--button{
+    background-color: #5035FF;
+    color: #F5F5F5;
+    border-radius: 5px;
+    border: none;
+    width: 130px;
+    height: 51px;
+    font-family: Karla;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.main--roll-button:focus, .fp--button:focus { 
+    outline: none;
+}
+
+.main--roll-button:active ,.fp--button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+
+.main--number-of-rolls {
+    font-size: 1.0rem;
+    margin: 0;
+}
+
+.main--time {
+    margin: 0;
+}
+
+.main--name-and-time span{
+    font-size: 1.0rem;
+    margin-right: 10px;
+}
+
+.fp--name-input {
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 10px;
+    font-family: Karla, sans-serif;
+}
